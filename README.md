@@ -1,2 +1,2 @@
 # sqlite-playground
-Messing around with sqlite
+Messing around with sqlite manipulations in Python
