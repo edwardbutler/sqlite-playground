@@ -20,6 +20,27 @@ def insert_random_me(id):
 	random_age = random.randrange(100)
 	cursor.execute("INSERT INTO people (ID, Name, Age) Values (?,?,?)", (id, "Edward Butler", random_age))
 
+def select_from_db():
+	
+	# select entire table
+	cursor.execute("SELECT * FROM people")
+	
+	# in form of a list of tuples representing each row
+	data = cursor.fetchall()
+
+	# print every row in selection
+	for row in data:
+		# each row is a tuple
+		print row
+
+	# select specific column(s) from table
+	cursor.execute("SELECT Age FROM people")
+	data = cursor.fetchall()
+	
+	# print each observed age
+	print "Observed ages: "
+	for row in data:
+		print row[0]
 
 # Create table and make entry
 create_table()
@@ -30,6 +51,9 @@ for i in range(10):
 
 # Commit changes
 conn.commit()
+
+# Select
+select_from_db()
 
 # Close cursor and connection
 cursor.close()
